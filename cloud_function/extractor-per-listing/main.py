@@ -38,7 +38,7 @@ storage_client = storage.Client()
 # -------------------- SIMPLE REGEX EXTRACTORS --------------------
 PRICE_RE      = re.compile(r"\$\s?([0-9,]+)")
 YEAR_RE       = re.compile(r"\b(19|20)\d{2}\b")
-MAKE_MODEL_RE = re.compile(r"\b([A-Z][a-z]+)\s+([A-Z][A-Za-z0-9]+)")
+MAKE_MODEL_RE = re.compile(r"\b(?!Contact\s+Information\b)([A-Z][a-z]+)\s+([A-Z][A-Za-z0-9]+)")
 
 # -------------------- HELPERS --------------------
 def _list_run_ids(bucket: str, scrapes_prefix: str) -> list[str]:
@@ -148,6 +148,26 @@ def parse_listing(text: str) -> dict:
             except ValueError: mi = None
     if mi is not None:
         d["mileage"] = mi
+
+    # condition/color/town (rewrite logics here, ignoring regex above)
+    n1 = re.search(r"\b(condition|state|status)\s*[:\-]?\s*(new|like new|excellent|good|fair|salvage|parts)\b", text, re.I)
+    if n1:
+        try:
+            d["condition"] = n1.group(2).lower()
+        except ValueError:
+            pass
+    n2 = re.search(r"\b(color|colour|exterior)\s*[:\-]?\s*([a-z]+)\b", text, re.I)
+    if n2:
+        try:
+            d["color"] = n2.group(2).lower()
+        except ValueError:
+            pass
+    n3 = re.search(r"\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s*,\s*[A-Z]{2}\b", text, re.I)
+    if n3:
+        try:
+            d["town"] = n3.group(1).lower()
+        except ValueError:
+            pass
 
     return d
 
