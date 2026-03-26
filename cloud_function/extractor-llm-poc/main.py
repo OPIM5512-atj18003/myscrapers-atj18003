@@ -156,7 +156,7 @@ def _safe_int(x):
 # -------------------- VERTEX AI CALL --------------------
 def _vertex_extract_fields(raw_text: str) -> dict:
     """
-    Ask Gemini to return JSON with exactly: price, year, make, model, mileage.
+    Ask Gemini to return JSON with exactly: price, year, make, model, mileage, interior_features, recent_repairs.
     """
     model = _get_vertex_model()
 
@@ -182,6 +182,7 @@ def _vertex_extract_fields(raw_text: str) -> dict:
         "If a value is not present, use null. "
         "Rules: integers for price/year/mileage; price in USD; mileage in miles; "
         "do not infer values not explicitly present; do not add extra keys."
+        "interior_features and recent_repairs should be concise summaries of relevant info from the text, or null if not present."
     )
 
     # FIX: Combine instruction and text into one prompt string (SDK compatibility)
@@ -320,6 +321,8 @@ def llm_extract_http(request: Request):
                 "make": parsed.get("make"),
                 "model": parsed.get("model"),
                 "mileage": parsed.get("mileage"),
+                "interior_features": parsed.get("interior_features"),
+                "recent_repairs": parsed.get("recent_repairs"),
                 "llm_provider": "vertex",
                 "llm_model": LLM_MODEL,
                 "llm_ts": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
