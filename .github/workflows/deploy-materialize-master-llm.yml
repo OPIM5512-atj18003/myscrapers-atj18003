@@ -1,4 +1,4 @@
-name: Deploy materialize-master-v2 (CF Gen2 + Cloud Scheduler)
+name: Deploy materialize-master-llm (CF Gen2 + Cloud Scheduler)
 
 on:
   workflow_dispatch:
@@ -27,7 +27,7 @@ env:
   DEPLOYER_SA: ${{ vars.DEPLOYER_SA }}
   WORKLOAD_IDENTITY_PROVIDER: ${{ vars.WORKLOAD_IDENTITY_PROVIDER }}
   SCHEDULE_BODY: ${{ vars.MATERIALIZE_BODY || '{}' }}
-  CRON_EXPR: "17 * * * *"   # :17 each hour
+  CRON_EXPR: "20 * * * *"   # :20 each hour
 
 jobs:
   deploy:
