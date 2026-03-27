@@ -48,7 +48,10 @@ def _jsonl_records_for_run(bucket: str, structured_prefix: str, run_id: str):
     """Yield dict records from .jsonl under .../run_id=<run_id>/jsonl/ (one JSON per file)."""
     b = storage_client.bucket(bucket)
     prefix = f"{structured_prefix}/run_id={run_id}/jsonl_llm/"
-    for blob in b.list_blobs(prefix=prefix):
+    
+    blobs = list(b.list_blobs(prefix=prefix))[-100:]   # last N files
+
+    for blob in blobs:
         if not blob.name.endswith(".jsonl"):
             continue
         data = blob.download_as_text()
