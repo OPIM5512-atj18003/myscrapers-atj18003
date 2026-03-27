@@ -20,7 +20,7 @@ env:
   ENTRY_POINT: materialize_http
   RUNTIME: python312
   BUCKET_NAME: ${{ vars.BUCKET_NAME }}
-  TIMEOUT_SECONDS: "3600"
+  TIMEOUT_SECONDS: "1800"
   MEMORY: "2Gi"
   STRUCTURED_PREFIX: "structured"
   RUNTIME_SA: ${{ vars.RUNTIME_SA }}
