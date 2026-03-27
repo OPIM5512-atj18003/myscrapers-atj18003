@@ -156,7 +156,7 @@ def _safe_int(x):
 # -------------------- VERTEX AI CALL --------------------
 def _vertex_extract_fields(raw_text: str) -> dict:
     """
-    Ask Gemini to return JSON with exactly: price, year, make, model, mileage, interior_features, recent_repairs.
+    Ask Gemini to return JSON with exactly: price, year, make, model, mileage, transmission, recent_repairs.
     """
     model = _get_vertex_model()
 
@@ -169,10 +169,10 @@ def _vertex_extract_fields(raw_text: str) -> dict:
             "make": {"type": "string", "nullable": True},
             "model": {"type": "string", "nullable": True},
             "mileage": {"type": "integer", "nullable": True},
-            "interior_features": {"type": "string", "nullable": True},
+            "transmission": {"type": "string", "nullable": True},
             "recent_repairs": {"type": "string", "nullable": True},
         },
-        "required": ["price", "year", "make", "model", "mileage", "interior_features", "recent_repairs"]
+        "required": ["price", "year", "make", "model", "mileage", "transmission", "recent_repairs"]
     }
 
     # System instruction (will be prepended to the prompt)
@@ -182,7 +182,6 @@ def _vertex_extract_fields(raw_text: str) -> dict:
         "If a value is not present, use null. "
         "Rules: integers for price/year/mileage; price in USD; mileage in miles; "
         "do not infer values not explicitly present; do not add extra keys."
-        "interior_features should be a short comma-separated list of up to 5 explicitly mentioned interior features. Prefer the most notable or specific features if more than 5 are mentioned. Do not include full sentences, opinions, or condition descriptions. Return null if not present."
         "recent_repairs should be concise summaries of relevant info from the text, or null if not present."
     )
 
@@ -322,7 +321,7 @@ def llm_extract_http(request: Request):
                 "make": parsed.get("make"),
                 "model": parsed.get("model"),
                 "mileage": parsed.get("mileage"),
-                "interior_features": parsed.get("interior_features"),
+                "transmission": parsed.get("transmission"),
                 "recent_repairs": parsed.get("recent_repairs"),
                 "llm_provider": "vertex",
                 "llm_model": LLM_MODEL,
