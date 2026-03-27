@@ -182,7 +182,8 @@ def _vertex_extract_fields(raw_text: str) -> dict:
         "If a value is not present, use null. "
         "Rules: integers for price/year/mileage; price in USD; mileage in miles; "
         "do not infer values not explicitly present; do not add extra keys."
-        "interior_features and recent_repairs should be concise summaries of relevant info from the text, or null if not present."
+        "interior_features should be a short comma-separated list of up to 5 explicitly mentioned interior features. Prefer the most notable or specific features if more than 5 are mentioned. Do not include full sentences, opinions, or condition descriptions. Return null if not present."
+        "recent_repairs should be concise summaries of relevant info from the text, or null if not present."
     )
 
     # FIX: Combine instruction and text into one prompt string (SDK compatibility)
