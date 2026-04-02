@@ -156,23 +156,25 @@ def _safe_int(x):
 # -------------------- VERTEX AI CALL --------------------
 def _vertex_extract_fields(raw_text: str) -> dict:
     """
-    Ask Gemini to return JSON with exactly: price, year, make, model, mileage, transmission, recent_repairs.
+    Ask Gemini to return JSON with exactly: price, year, make, model, mileage, seller_urgency, recent_repairs, condition, transmission.
     """
     model = _get_vertex_model()
 
     # Strict JSON schema - FIX: Removed "additionalProperties": False
     schema = {
         "type": "object",
-        "properties": {
+        "properties": { # want seller urganecy to be ordianl categorical feature (low, medium, high), recent repairs to be ordinal categorical variable (none, minor, major), condition to be ordinal cateogrical feature
             "price": {"type": "integer", "nullable": True},
             "year": {"type": "integer", "nullable": True},
             "make": {"type": "string", "nullable": True},
             "model": {"type": "string", "nullable": True},
             "mileage": {"type": "integer", "nullable": True},
-            "transmission": {"type": "string", "nullable": True},
+            "seller_urgency": {"type": "string", "nullable": True},
             "recent_repairs": {"type": "string", "nullable": True},
+            "condition": {"type": "string", "nullable": True},
+            "transmission": {"type": "string", "nullable": True},
         },
-        "required": ["price", "year", "make", "model", "mileage", "transmission", "recent_repairs"]
+        "required": ["price", "year", "make", "model", "mileage", "seller_urgency", "recent_repairs", "condition", "transmission"],
     }
 
     # System instruction (will be prepended to the prompt)
@@ -182,7 +184,10 @@ def _vertex_extract_fields(raw_text: str) -> dict:
         "If a value is not present, use null. "
         "Rules: integers for price/year/mileage; price in USD; mileage in miles; "
         "do not infer values not explicitly present; do not add extra keys."
-        "recent_repairs should be concise summaries of relevant info from the text, or null if not present."
+        "seller_urgency must be one of ['low', 'medium', 'high'] based on language indicating how quickly the seller wants to sell."
+        "recent_repairs must be one of ['none', 'minor', 'major'] based only on explicitly mentioned repairs."
+        "condition must be one of ['poor', 'fair', 'good', 'excellent'] based only on explicit descriptions."
+        "transmission must be one of ['automatic', 'manual'] if mentioned, otherwise null."
     )
 
     # FIX: Combine instruction and text into one prompt string (SDK compatibility)
@@ -321,8 +326,10 @@ def llm_extract_http(request: Request):
                 "make": parsed.get("make"),
                 "model": parsed.get("model"),
                 "mileage": parsed.get("mileage"),
-                "transmission": parsed.get("transmission"),
+                "seller_urgency": parsed.get("seller_urgency"),
                 "recent_repairs": parsed.get("recent_repairs"),
+                "condition": parsed.get("condition"),
+                "transmission": parsed.get("transmission"),
                 "llm_provider": "vertex",
                 "llm_model": LLM_MODEL,
                 "llm_ts": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
