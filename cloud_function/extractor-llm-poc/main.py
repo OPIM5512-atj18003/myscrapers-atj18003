@@ -163,7 +163,7 @@ def _vertex_extract_fields(raw_text: str) -> dict:
     # Strict JSON schema - FIX: Removed "additionalProperties": False
     schema = {
         "type": "object",
-        "properties": { # want seller urganecy to be ordianl categorical feature (low, medium, high), recent repairs to be ordinal categorical variable (none, minor, major), condition to be ordinal cateogrical feature
+        "properties": {
             "price": {"type": "integer", "nullable": True},
             "year": {"type": "integer", "nullable": True},
             "make": {"type": "string", "nullable": True},
