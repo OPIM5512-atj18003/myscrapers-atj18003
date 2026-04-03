@@ -106,18 +106,23 @@ def run_once(dry_run: bool = False, max_depth: int = 12, min_samples_leaf: int =
         ]
     )
 
-    model = DecisionTreeRegressor(max_depth=max_depth, min_samples_leaf=min_samples_leaf, random_state=42)
-    pipe = Pipeline([("pre", pre), ("model", model)])
+    #model = DecisionTreeRegressor(max_depth=max_depth, min_samples_leaf=min_samples_leaf, random_state=42)
+    #pipe = Pipeline([("pre", pre), ("model", model)])
 
+    from tpot import TPOTRegressor
     X_train = train_df[feats]
     y_train = train_df[target]
-    pipe.fit(X_train, y_train)
+    X_train_pre = pre.fit_transform(X_train)
+    tpot = TPOTRegressor(generations=2, population_size=10, verbosity=2, random_state=42)
+    
+    tpot.fit(X_train_pre, y_train)
 
     # ---- Predict/evaluate on today's holdout (now includes actual price fields) ----
     mae_today = None
     preds_df = pd.DataFrame()
     if not holdout_df.empty:
         X_h = holdout_df[feats]
+        X_h_pre = pre.transform(X_h)
         y_hat = pipe.predict(X_h)
 
         cols = ["post_id", "scraped_at", "make", "model", "year", "mileage", "price", "seller_urgency", "recent_repairs", "condition", "transmission"]
