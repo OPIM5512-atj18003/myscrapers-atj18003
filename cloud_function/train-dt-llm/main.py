@@ -123,7 +123,7 @@ def run_once(dry_run: bool = False, max_depth: int = 12, min_samples_leaf: int =
     if not holdout_df.empty:
         X_h = holdout_df[feats]
         X_h_pre = pre.transform(X_h)
-        y_hat = pipe.predict(X_h)
+        y_hat = tpot.predict(X_h_pre)
 
         cols = ["post_id", "scraped_at", "make", "model", "year", "mileage", "price", "seller_urgency", "recent_repairs", "condition", "transmission"]
         preds_df = holdout_df[cols].copy()
