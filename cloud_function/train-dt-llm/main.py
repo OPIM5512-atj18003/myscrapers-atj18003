@@ -63,6 +63,11 @@ def run_once(dry_run: bool = False, max_depth: int = 12, min_samples_leaf: int =
     df["year_num"]    = _clean_numeric(df["year"])
     df["mileage_num"] = _clean_numeric(df["mileage"])
 
+    valid_repairs = {"none", "minor", "major"}
+    df["recent_repairs"] = df["recent_repairs"].where(
+        df["recent_repairs"].isin(valid_repairs), other=np.nan
+    )
+
     valid_price_rows = int(df["price_num"].notna().sum())
     logging.info("Rows total=%d | with valid numeric price=%d", orig_rows, valid_price_rows)
 
