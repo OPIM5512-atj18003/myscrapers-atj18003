@@ -113,7 +113,7 @@ def run_once(dry_run: bool = False):
     X_train = train_df[feats]
     y_train = train_df[target]
     X_train_pre = pre.fit_transform(X_train)
-    tpot = TPOTRegressor(generations=1, population_size=5, random_state=42)
+    tpot = TPOTRegressor(generations=1, population_size=3, random_state=42)
     
     tpot.fit(X_train_pre, y_train)
     logging.info("Best TPOT pipeline: %s", tpot.fitted_pipeline_)
