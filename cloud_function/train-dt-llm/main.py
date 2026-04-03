@@ -39,7 +39,7 @@ def _clean_numeric(s: pd.Series) -> pd.Series:
     s = s.astype(str).str.replace(r"[^\d.]+", "", regex=True).str.strip()
     return pd.to_numeric(s, errors="coerce")
 
-def run_once(dry_run: bool = False, max_depth: int = 12, min_samples_leaf: int = 10):
+def run_once(dry_run: bool = False):
     client = storage.Client(project=PROJECT_ID)
     df = _read_csv_from_gcs(client, GCS_BUCKET, DATA_KEY)
 
@@ -113,9 +113,10 @@ def run_once(dry_run: bool = False, max_depth: int = 12, min_samples_leaf: int =
     X_train = train_df[feats]
     y_train = train_df[target]
     X_train_pre = pre.fit_transform(X_train)
-    tpot = TPOTRegressor(generations=2, population_size=5, random_state=42)
+    tpot = TPOTRegressor(generations=1, population_size=5, random_state=42)
     
     tpot.fit(X_train_pre, y_train)
+    logging.info("Best TPOT pipeline: %s", tpot.fitted_pipeline_)
 
     # ---- Predict/evaluate on today's holdout (now includes actual price fields) ----
     mae_today = None
@@ -123,7 +124,7 @@ def run_once(dry_run: bool = False, max_depth: int = 12, min_samples_leaf: int =
     if not holdout_df.empty:
         X_h = holdout_df[feats]
         X_h_pre = pre.transform(X_h)
-        y_hat = tpot.predict(X_h_pre)
+        y_hat = np.maximum(tpot.predict(X_h_pre), 0)
 
         cols = ["post_id", "scraped_at", "make", "model", "year", "mileage", "price", "seller_urgency", "recent_repairs", "condition", "transmission"]
         preds_df = holdout_df[cols].copy()
@@ -163,8 +164,6 @@ def train_dt_http(request):
         body = request.get_json(silent=True) or {}
         result = run_once(
             dry_run=bool(body.get("dry_run", False)),
-            max_depth=int(body.get("max_depth", 12)),
-            min_samples_leaf=int(body.get("min_samples_leaf", 10)),
         )
         code = 200 if result.get("status") == "ok" else 204
         return (json.dumps(result), code, {"Content-Type": "application/json"})
