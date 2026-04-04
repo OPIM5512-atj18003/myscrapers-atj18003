@@ -148,7 +148,7 @@ def run_once(dry_run: bool = False):
         result = permutation_importance(
             tpot.fitted_pipeline_,
             X_perm,
-            y_true[mask],
+            y_true,
             n_repeats=5,
             random_state=42,
             scoring="neg_mean_absolute_error"
@@ -163,6 +163,28 @@ def run_once(dry_run: bool = False):
             [(feature_names[i], float(result.importances_mean[i])) for i in top5_idx[::-1]]
         )
 
+    # ---- Partial Dependence Plots (PDP) for top 3 features
+        from sklearn.inspection import PartialDependenceDisplay
+        import matplotlib.pyplot as plt
+        
+        feature_to_idx = {name: i for i, name in enumerate(feature_names)}
+        top_features = [feature_names[i] for i in top5_idx[::-1][:3]]
+
+        for feat in top_features:
+            feature_idx = feature_to_idx[feat]
+            fig, ax = plt.subplots(figsize=(6, 4))
+            PartialDependenceDisplay.from_estimator(
+                tpot.fitted_pipeline_,
+                X_perm,
+                features=[feature_idx],
+                feature_names=feature_names,
+                ax=ax,
+            )
+            plt.title(f"Partial Dependence of {feat}")
+            plt.tight_layout()
+            plt.show()
+            plt.close(fig)
+    
     # --- Output path: HOURLY folder structure ---
     now_utc = pd.Timestamp.utcnow().tz_convert("UTC")
     out_key = f"{OUTPUT_PREFIX}/{now_utc.strftime('%Y%m%d%H')}/preds.csv"
