@@ -206,7 +206,8 @@ def run_once(dry_run: bool = False):
             pdp_key = f"{OUTPUT_PREFIX}/{now_utc.strftime('%Y%m%d%H')}/{pdp_filename}"
 
             plt.savefig(pdp_local_path)
-            _upload_file_to_gcs(client, GCS_BUCKET, pdp_key, pdp_local_path)
+            plt.close(fig)
+            _upload_file_to_gcs(client, GCS_BUCKET, pdp_key, pdp_local_path, content_type="image/png")
             logging.info("Wrote PDP for %s to gs://%s/%s", feat, GCS_BUCKET, pdp_key)
 
     # --- Output path: HOURLY folder structure ---
