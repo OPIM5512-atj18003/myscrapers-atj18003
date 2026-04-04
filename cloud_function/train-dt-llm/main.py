@@ -168,7 +168,7 @@ def run_once(dry_run: bool = False):
         
         perm_df = pd.DataFrame({
             "feature": feature_names,
-            "importance_mean": result.importances_mean
+            "importance_mean": result.importances_mean,
             "importance_std": result.importances_std
         }).sort_values("importance_mean", ascending=False)
         perm_key = f"{OUTPUT_PREFIX}/{now_utc.strftime('%Y%m%d%H')}/permutation_importance.csv"
