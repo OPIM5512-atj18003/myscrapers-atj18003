@@ -34,6 +34,11 @@ def _write_csv_to_gcs(client: storage.Client, bucket: str, key: str, df: pd.Data
     blob = b.blob(key)
     blob.upload_from_string(df.to_csv(index=False), content_type="text/csv")
 
+def _upload_file_to_gcs(client: storage.Client, bucket: str, key: str, local_path: str, content_type: str):
+    b = client.bucket(bucket)
+    blob = b.blob(key)
+    blob.upload_from_filename(local_path, content_type=content_type)
+
 def _clean_numeric(s: pd.Series) -> pd.Series:
     # Strip $, commas, spaces; keep digits and dot
     s = s.astype(str).str.replace(r"[^\d.]+", "", regex=True).str.strip()
@@ -175,7 +180,7 @@ def run_once(dry_run: bool = False):
         _write_csv_to_gcs(client, GCS_BUCKET, perm_key, perm_df)
         logging.info("Wrote permutation importance to gs://%s/%s (%d rows)", GCS_BUCKET, perm_key, len(perm_df))
 
-    # ---- Partial Dependence Plots (PDP) for top 3 features
+    # ---- Partial Dependence Plots (PDP) for top 3 features w/ saving to GCS
         from sklearn.inspection import PartialDependenceDisplay
         import matplotlib.pyplot as plt
         
@@ -194,9 +199,16 @@ def run_once(dry_run: bool = False):
             )
             plt.title(f"Partial Dependence of {feat}")
             plt.tight_layout()
-            plt.show()
-            plt.close(fig)
-    
+            
+            safe_feat = re.sub(r"[^a-zA-Z0-9_]", "_", feat)
+            pdp_filename = f"pdp_{safe_feat}.png"
+            pdp_local_path = f"/tmp/{pdp_filename}"
+            pdp_key = f"{OUTPUT_PREFIX}/{now_utc.strftime('%Y%m%d%H')}/{pdp_filename}"
+
+            plt.savefig(pdp_local_path)
+            _upload_file_to_gcs(client, GCS_BUCKET, pdp_key, pdp_local_path)
+            logging.info("Wrote PDP for %s to gs://%s/%s", feat, GCS_BUCKET, pdp_key)
+
     # --- Output path: HOURLY folder structure ---
     out_key = f"{OUTPUT_PREFIX}/{now_utc.strftime('%Y%m%d%H')}/preds.csv"
 
