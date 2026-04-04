@@ -137,6 +137,29 @@ def run_once(dry_run: bool = False):
             if mask.any():
                 mae_today = float(mean_absolute_error(y_true[mask], y_hat[mask]))
 
+    # ---- Permutation Importance
+        from sklearn.inspection import permutation_importance
+        
+        X_perm = X_h_pre.toarray() if hasattr(X_h_pre, "toarray") else X_h_pre
+
+        result = permutation_importance(
+            tpot.fitted_pipeline_,
+            X_perm,
+            y_true[mask],
+            n_repeats=5,
+            random_state=42,
+            scoring="neg_mean_absolute_error"
+        )
+
+        perm_idx_sorted = result.importances_mean.argsort()
+        top5_idx = perm_idx_sorted[-5:]
+        feature_names = pre.get_feature_names_out()
+
+        logging.info(
+            "Top 5 permutation importance features: %s",
+            [(feature_names[i], float(result.importances_mean[i])) for i in top5_idx[::-1]]
+        )
+
     # --- Output path: HOURLY folder structure ---
     now_utc = pd.Timestamp.utcnow().tz_convert("UTC")
     out_key = f"{OUTPUT_PREFIX}/{now_utc.strftime('%Y%m%d%H')}/preds.csv"
