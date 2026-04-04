@@ -163,6 +163,18 @@ def run_once(dry_run: bool = False):
             [(feature_names[i], float(result.importances_mean[i])) for i in top5_idx[::-1]]
         )
 
+        # Save full permutation importance results to GCS
+        now_utc = pd.Timestamp.utcnow().tz_convert("UTC")
+        
+        perm_df = pd.DataFrame({
+            "feature": feature_names,
+            "importance_mean": result.importances_mean
+            "importance_std": result.importances_std
+        }).sort_values("importance_mean", ascending=False)
+        perm_key = f"{OUTPUT_PREFIX}/{now_utc.strftime('%Y%m%d%H')}/permutation_importance.csv"
+        _write_csv_to_gcs(client, GCS_BUCKET, perm_key, perm_df)
+        logging.info("Wrote permutation importance to gs://%s/%s (%d rows)", GCS_BUCKET, perm_key, len(perm_df))
+
     # ---- Partial Dependence Plots (PDP) for top 3 features
         from sklearn.inspection import PartialDependenceDisplay
         import matplotlib.pyplot as plt
@@ -186,7 +198,6 @@ def run_once(dry_run: bool = False):
             plt.close(fig)
     
     # --- Output path: HOURLY folder structure ---
-    now_utc = pd.Timestamp.utcnow().tz_convert("UTC")
     out_key = f"{OUTPUT_PREFIX}/{now_utc.strftime('%Y%m%d%H')}/preds.csv"
 
     if not dry_run and len(preds_df) > 0:
