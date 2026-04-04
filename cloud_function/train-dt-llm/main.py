@@ -211,7 +211,7 @@ def run_once(dry_run: bool = False):
     # --- Output path: HOURLY folder structure ---
     out_key = f"{OUTPUT_PREFIX}/{now_utc.strftime('%Y%m%d%H')}/preds.csv"
 
-    if not dry_run and len(preds_df) > 0:
+    if len(preds_df) > 0:
         _write_csv_to_gcs(client, GCS_BUCKET, out_key, preds_df)
         logging.info("Wrote predictions to gs://%s/%s (%d rows)", GCS_BUCKET, out_key, len(preds_df))
     else:
