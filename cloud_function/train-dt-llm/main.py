@@ -123,19 +123,22 @@ def run_once(dry_run: bool = False):
     preds_df = pd.DataFrame()
     if not holdout_df.empty:
         X_h = holdout_df[feats]
-        X_h_pre = pre.transform(X_h)
-        y_hat = np.maximum(tpot.predict(X_h_pre), 0)
+        y_true = holdout_df["price_num"]
 
-        cols = ["post_id", "scraped_at", "make", "model", "year", "mileage", "price", "seller_urgency", "recent_repairs", "condition", "transmission"]
-        preds_df = holdout_df[cols].copy()
-        preds_df["actual_price"] = holdout_df["price_num"]       # cleaned numeric truth
-        preds_df["pred_price"]   = np.round(y_hat, 2)
+        mask = y_true.notna()
+        if mask.any():
+            X_h = X_h[mask]
+            y_true = y_true[mask]
 
-        if holdout_df["price_num"].notna().any():
-            y_true = holdout_df["price_num"]
-            mask = y_true.notna()
-            if mask.any():
-                mae_today = float(mean_absolute_error(y_true[mask], y_hat[mask]))
+            X_h_pre = pre.transform(X_h)
+            y_hat = np.maximum(tpot.predict(X_h_pre), 0)
+
+            cols = ["post_id", "scraped_at", "make", "model", "year", "mileage", "price", "seller_urgency", "recent_repairs", "condition", "transmission"]
+            preds_df = holdout_df.loc[mask, cols].copy()
+            preds_df["actual_price"] = y_true       # cleaned numeric truth
+            preds_df["pred_price"] = np.round(y_hat, 2)
+
+            mae_today = float(mean_absolute_error(y_true, y_hat))
 
     # ---- Permutation Importance
         from sklearn.inspection import permutation_importance
