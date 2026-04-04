@@ -47,6 +47,7 @@ def _clean_numeric(s: pd.Series) -> pd.Series:
 def run_once(dry_run: bool = False):
     client = storage.Client(project=PROJECT_ID)
     df = _read_csv_from_gcs(client, GCS_BUCKET, DATA_KEY)
+    now_utc = pd.Timestamp.utcnow().tz_convert("UTC")
 
     required = {"scraped_at", "price", "make", "model", "year", "mileage"}
     missing = required - set(df.columns)
@@ -167,9 +168,6 @@ def run_once(dry_run: bool = False):
             "Top 5 permutation importance features: %s",
             [(feature_names[i], float(result.importances_mean[i])) for i in top5_idx[::-1]]
         )
-
-        # Save full permutation importance results to GCS
-        now_utc = pd.Timestamp.utcnow().tz_convert("UTC")
         
         perm_df = pd.DataFrame({
             "feature": feature_names,
