@@ -1,0 +1,99 @@
+name: Data Sync Hourly Predictions to Repo
+run-name: Syncing hourly predictions for ${{ github.ref_name }} by @${{ github.actor }} 
+on:
+  schedule:
+    - cron: '45 * * * *' # Every hour at 45 minutes past the hour
+  workflow_dispatch: 
+
+permissions:
+  contents: write # REQUIRED to commit and push files
+  id-token: write # REQUIRED for Workload Identity Federation (WIF)
+
+# Inherit variables from your existing setup
+env:
+  PROJECT_ID: ${{ vars.PROJECT_ID }}
+  BUCKET_NAME: ${{ vars.BUCKET_NAME }}
+  WORKLOAD_IDENTITY_PROVIDER: ${{ vars.WORKLOAD_IDENTITY_PROVIDER }}
+  DEPLOYER_SA: ${{ vars.DEPLOYER_SA }}
+  GCS_PREDS_PREFIX: "structured/preds_llm" # Base path for your prediction folders
+  OUTPUT_DIR: "results" # Local folder to store all timestamped files
+
+jobs:
+  sync_data:
+    runs-on: ubuntu-latest
+    steps:
+      # --- 1. SETUP & AUTHENTICATION ---
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          # FIX: Explicitly grant the GITHUB_TOKEN write access for push/rebase
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Auth (WIF) and Setup gcloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ env.DEPLOYER_SA }}
+      
+      - uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+
+      # --- 2. DOWNLOAD AND RENAME DATA ---
+      - name: Find Latest Run ID and Download Run Folder
+        id: download_run # Step ID used to reference outputs later
+        shell: bash
+        run: |
+          set -euo pipefail
+          
+          # 2a. Find the LATEST folder/run_id in GCS
+          LATEST_RUN_DIR=$(gsutil ls -d gs://${BUCKET_NAME}/${GCS_PREDS_PREFIX}/*/ | tail -1)
+          
+          # 2b. Extract the timestamp (folder name, e.g., 2025120816)
+          LATEST_RUN_ID=$(echo "$LATEST_RUN_DIR" | sed -E "s|gs://${BUCKET_NAME}/${GCS_PREDS_PREFIX}/||; s|/||")
+
+          # 2c. Define file paths and save variables to GITHUB_OUTPUT
+          LOCAL_RUN_DIR="${{ env.OUTPUT_DIR }}/$LATEST_RUN_ID"
+          GCS_RUN_DIR="gs://${BUCKET_NAME}/${GCS_PREDS_PREFIX}/$LATEST_RUN_ID/"
+          
+          echo "run_id=$LATEST_RUN_ID" >> "$GITHUB_OUTPUT"
+          echo "Detected latest run ID: $LATEST_RUN_ID"
+          
+          # 2d. Create local folder and copy the files
+          mkdir -p "$LOCAL_RUN_DIR"
+          gsutil cp "${GCS_RUN_DIR}preds.csv" "$LOCAL_RUN_DIR/preds.csv"
+          gsutil cp "${GCS_RUN_DIR}permutation_importance.csv" "$LOCAL_RUN_DIR/permutation_importance.csv"
+
+          if gsutil ls "${GCS_RUN_DIR}pdp_*.png" >/dev/null 2>&1; then
+            gsutil cp "${GCS_RUN_DIR}pdp_*.png" "$LOCAL_RUN_DIR/"
+          fi
+          
+          echo "Downloaded run artifacts to $LOCAL_RUN_DIR"
+
+      # --- 3. COMMIT AND PUSH ---
+      - name: Commit and Push New Run Folder
+        if: success() 
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Retrieve variables from the previous step's output
+          RUN_ID="${{ steps.download_run.outputs.run_id }}"
+          
+          # Stage the newly created run folder
+          git add "${{ env.OUTPUT_DIR }}/$RUN_ID"
+
+          # Skip commit if nothing new was added
+          if git diff --cached --quiet; then
+            echo "No new changes to commit."
+            exit 0
+          fi
+          
+          # Commit the new folder
+          git commit -m "🤖 Data Sync: Add hourly artifacts for run $RUN_ID"
+          
+          # FIX 2: Pull the latest remote changes and rebase to resolve 'rejected' error
+          git pull --rebase origin main 
+          
+          # Push the changes
+          git push
