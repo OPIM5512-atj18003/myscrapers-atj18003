@@ -1,0 +1,554 @@
+feature,importance_mean,importance_std
+num__mileage_num,6038.670865482812,371.15209845773535
+num__year_num,1529.2130101769467,118.4815822533105
+cat__recent_repairs_none,610.470351526647,257.13754015012296
+cat__transmission_automatic,542.423504146029,77.6661096739913
+cat__condition_excellent,229.90367023507315,268.0748965024136
+cat__recent_repairs_minor,58.78938141048493,117.5787628208739
+cat__condition_good,58.789381410467286,117.57876282086818
+cat__make_Acura,58.78938141044182,117.57876282088273
+cat__make_Ram,58.78938141044182,117.57876282088364
+cat__make_Audi,58.78938141044146,117.57876282088291
+cat__model_F150,58.78938141044146,117.5787628208829
+cat__make_ford,58.78938141044146,117.5787628208829
+cat__condition_fair,58.789381410441095,117.57876282088401
+cat__seller_urgency_high,42.4425649431425,173.24000382899337
+cat__transmission_manual,8.440110832452774e-11,3.37293807722723e-11
+cat__model_Bel Air,8.330971468240022e-11,7.275957614183426e-13
+cat__recent_repairs_major,7.312337402254344e-11,3.926658454460796e-12
+cat__make_Chevrolet,7.112248567864299e-11,2.1853626666153518e-11
+cat__make_Ford,3.2741809263825417e-11,2.9711397639905654e-11
+cat__model_Express 2500 Cargo,2.037268131971359e-11,2.8241824194767085e-11
+cat__make_Dodge,2.000888343900442e-11,2.850652966904415e-11
+cat__model_Mustang GT,1.6552803572267293e-11,1.455191522836685e-12
+cat__make_Nissan,1.4733814168721437e-11,2.8566821753921363e-11
+cat__make_Mercedes-Benz,1.4551915228366852e-11,2.956067656703781e-11
+cat__model_Rogue,1.4370016288012267e-11,2.8740032576024534e-11
+cat__model_GLK350,1.4370016288012267e-11,2.8740032576024534e-11
+cat__model_Grand Caravan,1.4370016288012267e-11,2.8740032576024534e-11
+cat__model_tiguan,8.185452315956354e-12,1.2732925824820995e-11
+cat__make_volkswagen,8.185452315956354e-12,1.2732925824820995e-11
+cat__model_LC 500,6.912159733474254e-12,7.275957614183425e-13
+cat__make_Lexus,6.912159733474254e-12,2.1212879418618467e-12
+cat__model_express 2500,6.002665031701326e-12,1.200533006340265e-11
+cat__make_Chevy,5.4569682106375694e-12,1.232356930701231e-11
+cat__model_Pacifica,3.637978807091713e-12,0.0
+cat__make_Chrysler,3.637978807091713e-12,0.0
+cat__seller_urgency_low,2.7284841053187847e-12,1.8189894035458565e-12
+cat__make_acura,2.7284841053187847e-12,1.504382317080696e-11
+cat__make_Jeep,1.4551915228366853e-12,1.7822383544867467e-12
+cat__model_Silverado 1500,1.2732925824820995e-12,1.5857581978855427e-12
+cat__make_BMW,1.0913936421275138e-12,2.1827872842550277e-12
+cat__model_Yukon XL,7.275957614183426e-13,1.4551915228366855e-12
+cat__model_X1,7.275957614183426e-13,1.4551915228366853e-12
+cat__model_Equinox,7.275957614183426e-13,8.911191772433734e-13
+cat__model_Cherokee Latitude,7.275957614183426e-13,1.4551915228366855e-12
+cat__seller_urgency_medium,7.275957614183426e-13,7.147494290398209e-12
+cat__model_Escape,7.275957614183426e-13,1.4551915228366853e-12
+cat__make_GMC,7.275957614183426e-13,1.4551915228366855e-12
+cat__model_Sentra,3.637978807091713e-13,7.275957614183426e-13
+cat__make_Jaguar,3.637978807091713e-13,7.275957614183427e-13
+cat__model_LS 460,3.637978807091713e-13,7.275957614183427e-13
+cat__model_Altima,3.637978807091713e-13,7.275957614183427e-13
+cat__model_Crosstrek,3.637978807091713e-13,7.275957614183426e-13
+cat__model_Silverado,3.637978807091713e-13,7.275957614183427e-13
+cat__model_Q3,3.637978807091713e-13,7.275957614183427e-13
+cat__model_ATS Sedan,3.637978807091713e-13,7.275957614183427e-13
+cat__model_MK V Drophead coupe,3.637978807091713e-13,7.275957614183427e-13
+cat__model_Charger,3.637978807091713e-13,7.275957614183427e-13
+cat__model_5 Series,3.637978807091713e-13,7.275957614183426e-13
+cat__model_Prius Two,0.0,0.0
+cat__model_ProMaster 2500,0.0,0.0
+cat__model_Tlx,0.0,0.0
+cat__model_Town & Country,0.0,0.0
+cat__model_Trans Am,0.0,0.0
+cat__model_Traverse,0.0,0.0
+cat__model_ProMaster 1500,0.0,0.0
+cat__model_Prius Touring Hybrid Hatchback,0.0,0.0
+cat__model_Trax,0.0,0.0
+cat__model_Prius C Four,0.0,0.0
+cat__model_ROGUE S,0.0,0.0
+cat__model_Sienna LE,0.0,0.0
+cat__model_TAHOE LT,0.0,0.0
+cat__model_PROMASTER 2500,0.0,0.0
+cat__model_Super Duty F-350 SRW,0.0,0.0
+cat__model_Suburban LT,0.0,0.0
+cat__model_Sprinter C2500/C3500,0.0,0.0
+cat__model_Sportage,0.0,0.0
+cat__model_Prius Hybrid,0.0,0.0
+cat__model_SILVERADO 1500 RST Z-71 4X4 CREW CAB,0.0,0.0
+cat__model_SIERRA K 8CYL,0.0,0.0
+cat__model_S80 T6 Premier AWD Sedan,0.0,0.0
+cat__model_S60 T5 AWD Sport Sedan,0.0,0.0
+cat__model_S5 Convertible Premium Plus Quattro Drive,0.0,0.0
+cat__model_S4,0.0,0.0
+cat__model_S-class S550,0.0,0.0
+cat__model_Tundra SR5,0.0,0.0
+cat__model_X3 3.5i x-drive,0.0,0.0
+cat__model_X3 3.5i X-drive Premium SUV,0.0,0.0
+cat__model_X3 2.8i X-drive Premium SUV,0.0,0.0
+cat__model_X3,0.0,0.0
+cat__model_X2,0.0,0.0
+cat__model_Tundra,0.0,0.0
+cat__model_Outlander,0.0,0.0
+cat__model_Tiguan S,0.0,0.0
+cat__model_Impreza Sport,0.0,0.0
+cat__model_Wrangler Rubicon,0.0,0.0
+cat__model_Wrangler,0.0,0.0
+cat__model_WRANGLER SPORT,0.0,0.0
+cat__model_Versa SV,0.0,0.0
+cat__model_Versa,0.0,0.0
+cat__model_Venza LE FWD SUV,0.0,0.0
+cat__model_JETTA SE,0.0,0.0
+cat__model_Venza,0.0,0.0
+cat__model_TERRAIN SLE-2,0.0,0.0
+cat__model_Soul,0.0,0.0
+cat__model_Trax LS,0.0,0.0
+cat__model_X1 xdrive28i,0.0,0.0
+cat__model_Rav4 Limited,0.0,0.0
+cat__model_Rav 4,0.0,0.0
+cat__model_Ranger XLT,0.0,0.0
+cat__model_Ranger XL regular cab 2D 6FT,0.0,0.0
+cat__model_Ranger XL,0.0,0.0
+cat__model_Mountaineer Sport Utility,0.0,0.0
+cat__model_Montero,0.0,0.0
+cat__model_Range Rover,0.0,0.0
+cat__model_Rambler Classic,0.0,0.0
+cat__model_Ram 2500 5.9L Cummins,0.0,0.0
+cat__model_Ram 1500 Laramie,0.0,0.0
+cat__model_Ram 1500,0.0,0.0
+cat__model_SL500,0.0,0.0
+cat__model_Rx7,0.0,0.0
+cat__model_Rx 350 F Sport,0.0,0.0
+cat__model_RDX,0.0,0.0
+cat__model_Quattroporte,0.0,0.0
+cat__model_QX60,0.0,0.0
+cat__model_ILX,0.0,0.0
+cat__model_QX56,0.0,0.0
+cat__model_Q50,0.0,0.0
+cat__model_Q5 Prestige,0.0,0.0
+cat__model_Q5 Premium,0.0,0.0
+cat__model_Range Rover Sport,0.0,0.0
+cat__model_Impala,0.0,0.0
+cat__model_Impala LT,0.0,0.0
+cat__model_RX350,0.0,0.0
+cat__model_Q5,0.0,0.0
+cat__model_Pacifica Mini-T Campervan,0.0,0.0
+cat__model_Passat,0.0,0.0
+cat__model_Silverado 1500 Z71 LT,0.0,0.0
+cat__model_Silverado 1500 LT extended cab 4D,0.0,0.0
+cat__model_Passat SE,0.0,0.0
+cat__model_Kona,0.0,0.0
+cat__model_Sierra 2500hd Denali,0.0,0.0
+cat__model_Sierra 2500 HD SLE,0.0,0.0
+cat__model_Sierra 1500,0.0,0.0
+cat__model_S-Class,0.0,0.0
+cat__model_Sienna,0.0,0.0
+cat__model_Sentra SR,0.0,0.0
+cat__model_Highlander XLE AWD,0.0,0.0
+cat__model_Sedan,0.0,0.0
+cat__model_Wrangler Sahara,0.0,0.0
+cat__model_Savana 1500 Cargo,0.0,0.0
+cat__model_SRX4,0.0,0.0
+cat__model_Model Y,0.0,0.0
+cat__model_Model S,0.0,0.0
+cat__model_Model 3,0.0,0.0
+cat__model_Mini T HR Campervan,0.0,0.0
+cat__model_Mazda3,0.0,0.0
+cat__model_Maxima SV,0.0,0.0
+cat__model_Odyssey EX,0.0,0.0
+cat__model_Nx,0.0,0.0
+cat__model_LS 460 L,0.0,0.0
+cat__model_Seltos EX,0.0,0.0
+cat__model_soul +,0.0,0.0
+cat__model_soul,0.0,0.0
+cat__model_sonata GLS,0.0,0.0
+cat__model_sonata,0.0,0.0
+cat__model_pathfinder,0.0,0.0
+cat__model_outback 3.6r limited awd,0.0,0.0
+cat__model_outback,0.0,0.0
+cat__model_scion xb,0.0,0.0
+cat__model_santa fe,0.0,0.0
+cat__model_s,0.0,0.0
+cat__model_rogue s,0.0,0.0
+cat__model_rio,0.0,0.0
+cat__model_jetta,0.0,0.0
+cat__model_is 250,0.0,0.0
+cat__model_Impreza Hatchback Sport Premium,0.0,0.0
+cat__model_ram 3500,0.0,0.0
+cat__model_quest sl,0.0,0.0
+cat__model_protege,0.0,0.0
+cat__model_pilot ex,0.0,0.0
+cat__model_pick up,0.0,0.0
+cat__model_silverado 2500,0.0,0.0
+cat__make_chrysler,0.0,0.0
+cat__make_chevrolet,0.0,0.0
+cat__model_mdx,0.0,0.0
+cat__model_liberty sport 4x4,0.0,0.0
+cat__model_liberty sport,0.0,0.0
+cat__model_legacy,0.0,0.0
+cat__model_juke SV,0.0,0.0
+cat__model_gle350,0.0,0.0
+cat__model_impreza,0.0,0.0
+cat__make_ACURA,0.0,0.0
+cat__model_dakota,0.0,0.0
+cat__model_cruze lt,0.0,0.0
+cat__model_crosstrek,0.0,0.0
+cat__model_corvette zr1,0.0,0.0
+cat__model_corvette,0.0,0.0
+cat__model_yaris ia,0.0,0.0
+cat__model_xts,0.0,0.0
+cat__model_xc60,0.0,0.0
+cat__make_CHEVROLET,0.0,0.0
+cat__make_AMC,0.0,0.0
+cat__transmission_CVT,0.0,0.0
+cat__transmission_Automatic,0.0,0.0
+cat__model_town & country,0.0,0.0
+cat__model_suburban,0.0,0.0
+cat__model_tiguan 2.0t,0.0,0.0
+cat__make_Buick,0.0,0.0
+cat__model_silverado,0.0,0.0
+cat__make_Maserati,0.0,0.0
+cat__model_tacoma,0.0,0.0
+cat__model_suburban lt 4x4 suv,0.0,0.0
+cat__model_wrangler,0.0,0.0
+cat__model_tsx,0.0,0.0
+cat__model_trax,0.0,0.0
+cat__model_transit cargo van,0.0,0.0
+cat__model_town &country,0.0,0.0
+cat__model_tahoe,0.0,0.0
+cat__model_rav4 hybrid,0.0,0.0
+cat__model_ranger,0.0,0.0
+cat__model_tlx,0.0,0.0
+cat__model_Thunderbird,0.0,0.0
+cat__model_Taurus,0.0,0.0
+cat__model_Tahoe,0.0,0.0
+cat__model_TRAX LT,0.0,0.0
+cat__model_TLX,0.0,0.0
+cat__model_TL,0.0,0.0
+cat__model_accent se,0.0,0.0
+cat__model_civic ex-l,0.0,0.0
+cat__model_civic,0.0,0.0
+cat__model_city express,0.0,0.0
+cat__model_cherokee,0.0,0.0
+cat__model_charger,0.0,0.0
+cat__model_camry xle sedan,0.0,0.0
+cat__model_camry le sedan,0.0,0.0
+cat__model_g37,0.0,0.0
+cat__model_XV CROSSTREK HYBRID,0.0,0.0
+cat__model_camaro,0.0,0.0
+cat__model_beetle tdi convertible,0.0,0.0
+cat__model_aveo,0.0,0.0
+cat__model_altima,0.0,0.0
+cat__model_accord sport,0.0,0.0
+cat__model_accord ex-l,0.0,0.0
+cat__model_X7,0.0,0.0
+cat__model_X5,0.0,0.0
+cat__model_X3 3.5i x-drive SUV,0.0,0.0
+cat__model_Z3 Roadster,0.0,0.0
+cat__model_XV Crosstrek Limited 4D Wagon,0.0,0.0
+cat__model_XV Crosstrek Hybrid AWD,0.0,0.0
+cat__model_XV Crosstrek,0.0,0.0
+cat__model_XV CrossTrek,0.0,0.0
+cat__model_forester 2.5i limited awd,0.0,0.0
+cat__model_XTS,0.0,0.0
+cat__model_XJS Roadster,0.0,0.0
+cat__model_XF,0.0,0.0
+cat__model_XC70,0.0,0.0
+cat__model_XC60 T5 AWD Premier SUV,0.0,0.0
+cat__model_f-250,0.0,0.0
+cat__model_f-150,0.0,0.0
+cat__model_impala SS,0.0,0.0
+cat__model_gti,0.0,0.0
+cat__model_grand cherokee laredo,0.0,0.0
+cat__model_grand caravan sxt,0.0,0.0
+cat__model_golf,0.0,0.0
+cat__model_e350 super duty cutaway,0.0,0.0
+cat__model_Tiguan,0.0,0.0
+cat__model_e-250 econoline,0.0,0.0
+cat__model_forester,0.0,0.0
+cat__model_focus se,0.0,0.0
+cat__model_focus,0.0,0.0
+cat__model_flex,0.0,0.0
+cat__model_firebird trans am,0.0,0.0
+cat__model_corolla le,0.0,0.0
+cat__model_colorado,0.0,0.0
+cat__model_cj7,0.0,0.0
+cat__model_escape,0.0,0.0
+cat__model_escalade,0.0,0.0
+cat__model_equinox,0.0,0.0
+cat__model_elantra,0.0,0.0
+cat__model_ecosport s,0.0,0.0
+cat__model_camry,0.0,0.0
+cat__model_e-350 econoline,0.0,0.0
+cat__model_Civic Hybrid,0.0,0.0
+cat__model_Chevelle SS,0.0,0.0
+cat__model_Cherokee Latitude 4x4,0.0,0.0
+cat__model_Cherokee,0.0,0.0
+cat__model_A4 Quattro,0.0,0.0
+cat__model_Challenger,0.0,0.0
+cat__model_Celica GT,0.0,0.0
+cat__model_Carry,0.0,0.0
+cat__model_Caprice,0.0,0.0
+cat__model_Camry XLE,0.0,0.0
+cat__model_Camry SE,0.0,0.0
+cat__model_Camry,0.0,0.0
+cat__model_Camaro IROC-Z,0.0,0.0
+cat__model_22r,0.0,0.0
+cat__make_FORD,0.0,0.0
+cat__make_volvo,0.0,0.0
+cat__make_tesla,0.0,0.0
+cat__make_subaru,0.0,0.0
+cat__model_328i X-drive AWD Sedan,0.0,0.0
+cat__model_328i,0.0,0.0
+cat__make_nissna,0.0,0.0
+cat__make_nissan,0.0,0.0
+cat__make_mercedes-benz,0.0,0.0
+cat__make_mazda,0.0,0.0
+cat__make_lexus,0.0,0.0
+cat__make_kia,0.0,0.0
+cat__make_jeep,0.0,0.0
+cat__model_240,0.0,0.0
+cat__model_C300 4-matic Luxury Sedan,0.0,0.0
+cat__model_1500,0.0,0.0
+cat__model_EXPRESS 1500,0.0,0.0
+cat__model_EX37 Journey 4D SUV AWD,0.0,0.0
+cat__model_EX37 Journey,0.0,0.0
+cat__model_EX35,0.0,0.0
+cat__model_E450,0.0,0.0
+cat__model_E350 Sup,0.0,0.0
+cat__model_Coupe Deluxe,0.0,0.0
+cat__model_Country Squire Wagon,0.0,0.0
+cat__model_E250,0.0,0.0
+cat__model_E-class,0.0,0.0
+cat__model_E-Class,0.0,0.0
+cat__model_E-350 super duty,0.0,0.0
+cat__model_E 350 Sport 4MATIC Wagon,0.0,0.0
+cat__model_Durango,0.0,0.0
+cat__model_Civic LX,0.0,0.0
+cat__model_ACCORD LX,0.0,0.0
+cat__model_ACADIA SLT LIMITED,0.0,0.0
+cat__model_A7,0.0,0.0
+cat__model_A6 Premium Plus,0.0,0.0
+cat__model_A6,0.0,0.0
+cat__model_Altima 2.5 SV,0.0,0.0
+cat__model_A4,0.0,0.0
+cat__model_A3,0.0,0.0
+cat__model_9-2X Aero,0.0,0.0
+cat__model_7400,0.0,0.0
+cat__model_650xi Gran Coupe,0.0,0.0
+cat__model_626,0.0,0.0
+cat__model_6,0.0,0.0
+cat__model_ATS-4 AWD Sport Sedan,0.0,0.0
+cat__model_AMG GLE 43 Studio,0.0,0.0
+cat__model_328i Xdrive Sedan,0.0,0.0
+cat__make_Pontiac,0.0,0.0
+cat__make_NISSAN,0.0,0.0
+cat__model_325i,0.0,0.0
+cat__model_300c,0.0,0.0
+cat__model_300,0.0,0.0
+cat__model_3 Series 330i xDrive,0.0,0.0
+cat__model_3 Series 330e iPerformance,0.0,0.0
+cat__model_2500 HD,0.0,0.0
+cat__model_528i x-drive Premium Sedan,0.0,0.0
+cat__model_500 Abarth,0.0,0.0
+cat__make_dodge,0.0,0.0
+cat__make_Lincoln,0.0,0.0
+cat__model_thunderbird,0.0,0.0
+cat__model_C-class,0.0,0.0
+cat__model_taurus sel,0.0,0.0
+cat__model_taurus,0.0,0.0
+cat__make_JEEP,0.0,0.0
+cat__make_International,0.0,0.0
+cat__make_Infiniti,0.0,0.0
+cat__make_INFINITI,0.0,0.0
+cat__make_Mercedes Benz AMG,0.0,0.0
+cat__make_Mercedes Benz,0.0,0.0
+cat__make_Mercedes,0.0,0.0
+cat__make_HONDA,0.0,0.0
+cat__make_Freightliner,0.0,0.0
+cat__make_Land Rover,0.0,0.0
+cat__make_Kia,0.0,0.0
+cat__model_regal custom coupe,0.0,0.0
+cat__model_tc,0.0,0.0
+cat__model_C-Class,0.0,0.0
+cat__model_Bronco,0.0,0.0
+cat__model_Avalon Hybrid,0.0,0.0
+cat__model_Avalon,0.0,0.0
+cat__make_pontiac,0.0,0.0
+cat__model_Accord LX,0.0,0.0
+cat__model_Accord Ex Sedan,0.0,0.0
+cat__model_Accord,0.0,0.0
+cat__model_Accent,0.0,0.0
+cat__model_Acadia SLT AWD SUV,0.0,0.0
+cat__model_Acadia,0.0,0.0
+cat__model_C300 4matic,0.0,0.0
+cat__make_bmw,0.0,0.0
+cat__make_Volvo,0.0,0.0
+cat__model_335i convertible,0.0,0.0
+cat__make_VW,0.0,0.0
+cat__make_infiniti,0.0,0.0
+cat__make_hyundai,0.0,0.0
+cat__make_CHEVY,0.0,0.0
+cat__make_Mercury,0.0,0.0
+cat__make_Mercedes-benz,0.0,0.0
+cat__make_Tesla,0.0,0.0
+cat__make_Suzuki,0.0,0.0
+cat__make_Scion,0.0,0.0
+cat__make_SUBARU,0.0,0.0
+cat__make_CHRYSLER,0.0,0.0
+cat__make_cadillac,0.0,0.0
+cat__model_4runner trd off-road premium,0.0,0.0
+cat__model_4Runner,0.0,0.0
+cat__make_Volkswagen,0.0,0.0
+cat__model_Lucerne,0.0,0.0
+cat__model_Legacy,0.0,0.0
+cat__model_LX 570,0.0,0.0
+cat__model_Maxima,0.0,0.0
+cat__model_Malibu LT,0.0,0.0
+cat__model_MURANO SV,0.0,0.0
+cat__model_ML350,0.0,0.0
+cat__model_Journey SXT,0.0,0.0
+cat__model_Jetta Sedan,0.0,0.0
+cat__model_Jetta,0.0,0.0
+cat__model_JX35,0.0,0.0
+cat__model_MDX SPORT,0.0,0.0
+cat__model_MDX,0.0,0.0
+cat__model_M45X AWD Premium Sedan,0.0,0.0
+cat__model_Defender 90,0.0,0.0
+cat__model_Edge Limited AWD SUV,0.0,0.0
+cat__model_Econoline Cargo Van e-250,0.0,0.0
+cat__model_Econoline Cargo Van E-250,0.0,0.0
+cat__model_Explorer Limited 4WD SUV,0.0,0.0
+cat__model_Explorer,0.0,0.0
+cat__model_Escape XLT,0.0,0.0
+cat__model_Equinox L,0.0,0.0
+cat__model_Grand Cherokee Laredo,0.0,0.0
+cat__model_Grand Cherokee L,0.0,0.0
+cat__model_Grand Cherokee,0.0,0.0
+cat__model_Element EX,0.0,0.0
+cat__model_Elantra GLS,0.0,0.0
+cat__model_Elantra,0.0,0.0
+cat__model_El Camino SS,0.0,0.0
+cat__model_M240i,0.0,0.0
+cat__model_Outback Limited AWD Wagon,0.0,0.0
+cat__model_Outback 2.5i,0.0,0.0
+cat__model_Outback,0.0,0.0
+cat__model_Optima,0.0,0.0
+cat__model_Pilot,0.0,0.0
+cat__model_Pathfinder S,0.0,0.0
+cat__model_Pathfinder,0.0,0.0
+cat__model_Mustang V6,0.0,0.0
+cat__model_Mustang Convertible,0.0,0.0
+cat__model_Mustang,0.0,0.0
+cat__model_Murano,0.0,0.0
+cat__model_PACIFICA TOURING L,0.0,0.0
+cat__model_PACIFICA LIMITED,0.0,0.0
+cat__model_PACIFICA,0.0,0.0
+cat__model_M2,0.0,0.0
+cat__model_Focus,0.0,0.0
+cat__model_Flex,0.0,0.0
+cat__model_Fiesta S,0.0,0.0
+cat__model_GLE 43 Studio Coupe,0.0,0.0
+cat__model_GLE 350,0.0,0.0
+cat__model_GLA 250,0.0,0.0
+cat__model_GL 450 4MATIC,0.0,0.0
+cat__model_MKZ,0.0,0.0
+cat__model_MKT Limousine,0.0,0.0
+cat__model_MKT Limo,0.0,0.0
+cat__model_Frontier,0.0,0.0
+cat__model_Forte,0.0,0.0
+cat__model_Forester 2.5i Premium AWD SUV,0.0,0.0
+cat__model_Forester 2.5i Limited AWD,0.0,0.0
+cat__model_Forester,0.0,0.0
+cat__model_Fiesta,0.0,0.0
+cat__model_FUSION SE,0.0,0.0
+cat__model_FORESTER TOURING,0.0,0.0
+cat__model_F450 Super Duty,0.0,0.0
+cat__model_F150 XLT,0.0,0.0
+cat__model_Eos Komfort Convertible,0.0,0.0
+cat__model_Enclave,0.0,0.0
+cat__model_F-350 Super Duty Quad Cab XL Utility,0.0,0.0
+cat__model_F-350,0.0,0.0
+cat__model_F-250 Super Duty,0.0,0.0
+cat__model_F-150,0.0,0.0
+cat__model_F 150,0.0,0.0
+cat__model_CHEVELLE,0.0,0.0
+cat__model_CAMRY LE,0.0,0.0
+cat__model_El Camino,0.0,0.0
+cat__model_CTS,0.0,0.0
+cat__model_CRZ-EX,0.0,0.0
+cat__model_CROSSTREK,0.0,0.0
+cat__model_CR-V LX,0.0,0.0
+cat__model_CR-V EX-L,0.0,0.0
+cat__model_E350 4MATIC Wagon,0.0,0.0
+cat__model_E250 super duty,0.0,0.0
+cat__model_CR-V EX,0.0,0.0
+cat__model_CR-V,0.0,0.0
+cat__model_COBALT,0.0,0.0
+cat__model_CLS 500,0.0,0.0
+cat__model_CLA,0.0,0.0
+cat__model_CIVIC LX,0.0,0.0
+cat__model_Discovery,0.0,0.0
+cat__model_CX-5 Grand Touring,0.0,0.0
+cat__model_GS 300,0.0,0.0
+cat__model_GLK-Class,0.0,0.0
+cat__model_H2,0.0,0.0
+cat__model_Gti,0.0,0.0
+cat__model_Grand Cherokee Overland AWD SUV,0.0,0.0
+cat__model_Grand Cherokee Overland,0.0,0.0
+cat__model_Grand Cherokee Laredo E,0.0,0.0
+cat__model_G 63 AMG,0.0,0.0
+cat__model_Fusion Hybrid,0.0,0.0
+cat__model_Frontier SE Crew Cab,0.0,0.0
+cat__model_Grand Caravan SXT,0.0,0.0
+cat__model_Golf Sportwagen TSI SE Wagon,0.0,0.0
+cat__model_Golf GTI Autobahn,0.0,0.0
+cat__model_Glc,0.0,0.0
+cat__model_Express 2500,0.0,0.0
+cat__model_Civic Sedan,0.0,0.0
+cat__model_Dakota,0.0,0.0
+cat__model_D5500,0.0,0.0
+cat__model_Cx-5,0.0,0.0
+cat__model_Cruze,0.0,0.0
+cat__model_Crosstrek 2.0i Premium AWD Hatchback,0.0,0.0
+cat__model_F150 MODEL 7700,0.0,0.0
+cat__make_Hummer,0.0,0.0
+cat__model_F-550 Super Duty,0.0,0.0
+cat__model_Corvette,0.0,0.0
+cat__model_Corolla Special Edition,0.0,0.0
+cat__model_Corolla S 4Dr,0.0,0.0
+cat__model_Corolla LE,0.0,0.0
+cat__model_Cooper Hatchback,0.0,0.0
+cat__model_Express 3500,0.0,0.0
+cat__model_Cooper Countryman S Hatchback,0.0,0.0
+cat__make_Honda,-1.8189894035458566e-13,3.637978807091713e-13
+cat__model_CX-5,-1.8189894035458566e-13,3.6379788070917137e-13
+cat__make_Mini,-1.8189894035458566e-13,3.6379788070917137e-13
+cat__make_Saab,-1.8189894035458566e-13,3.6379788070917137e-13
+cat__model_Civic,-3.637978807091713e-13,4.455595886216867e-13
+cat__make_Subaru,-3.637978807091713e-13,4.455595886216867e-13
+cat__model_Impreza,-5.456968210637569e-13,1.091393642127514e-12
+cat__make_audi,-5.456968210637569e-13,1.0913936421275138e-12
+cat__make_chevy,-5.456968210637569e-13,1.0913936421275138e-12
+cat__make_Mazda,-5.456968210637569e-13,1.091393642127514e-12
+cat__model_a6 premium plus,-5.456968210637569e-13,1.0913936421275138e-12
+cat__model_Fusion,-5.456968210637569e-13,1.0913936421275138e-12
+cat__model_Sonata,-5.456968210637569e-13,1.091393642127514e-12
+cat__model_Ranger,-5.456968210637569e-13,1.0913936421275138e-12
+cat__model_silverado 1500,-5.456968210637569e-13,1.0913936421275138e-12
+cat__make_Mitsubishi,-5.456968210637569e-13,1.0913936421275138e-12
+cat__make_Toyota,-7.275957614183426e-13,1.0606439709309236e-12
+cat__make_TOYOTA,-7.275957614183426e-13,1.0606439709309238e-12
+cat__model_Corolla,-7.275957614183426e-13,1.0606439709309236e-12
+cat__make_Hyundai,-7.275957614183426e-13,1.0606439709309238e-12
+cat__model_accord,-1.2732925824820995e-12,7.275957614183426e-13
+cat__make_honda,-1.2732925824820995e-12,7.275957614183426e-13
+cat__make_RAM,-2.7284841053187847e-12,0.0
+cat__make_Cadillac,-2.9103830456733705e-12,6.7670317504010294e-12
+cat__make_Fiat,-3.2741809263825417e-12,6.548361852765084e-12
+cat__model_Silverado 2500 HD,-3.2741809263825417e-12,6.5483618527650835e-12
+cat__model_500,-3.2741809263825417e-12,6.548361852765084e-12
+cat__make_toyota,-3.456079866737127e-12,6.618722326915395e-12
+cat__model_Camaro,-3.092281986027956e-11,0.0
+cat__model_Neon,-6.621121428906917e-11,1.3096723705530167e-11
